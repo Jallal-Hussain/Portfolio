@@ -22,15 +22,11 @@
 
 .navbar--container > h1 {
   font-family: "BestermindRegular";
-  /* font-family: Helvetica, Arial, sans-serif; */
+  width: 200px;
   font-weight: 400;
   color: var(--primary-2);
   font-size: 1.67rem;
   user-select: none;
-}
-
-.navLink--container {
-  margin-top: 5rem;
 }
 
 .drawer > .MuiBackdrop-root {
@@ -52,9 +48,6 @@
 }
 
 @media (max-width: 800px) {
-  .navLink--container {
-    margin-top: 3rem;
-  }
   .navbar--container > h1 {
     font-size: 1.4rem;
   }

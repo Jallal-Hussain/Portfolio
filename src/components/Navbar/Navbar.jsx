@@ -1,11 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext, useState } from "react";
 import { NavHashLink as NavLink } from "react-router-hash-link";
-import { Button } from '@mui/material';
 import { Fade } from "react-awesome-reveal";
 import { IoMenuSharp, IoHomeSharp } from "react-icons/io5";
-import { HiDocumentText } from "react-icons/hi";
-import { BsFillGearFill } from "react-icons/bs";
+import { FaBrain, FaGraduationCap } from "react-icons/fa6";
 import { MdPhone } from "react-icons/md";
 import { FaUser, FaFolderOpen } from "react-icons/fa";
 import Drawer from "@mui/material/Drawer";
@@ -16,11 +14,12 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import "./Navbar.css";
 import { headerData } from "../../data/headerData";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { Margin } from "@mui/icons-material";
 
 function Navbar() {
   const { theme, setHandleDrawer } = useContext(ThemeContext);
   const muiTheme = useTheme();
-  const isSmallScreen = useMediaQuery(muiTheme.breakpoints.down("sm"));
+  const isSmallScreen = useMediaQuery(muiTheme.breakpoints.down("md"));
   const isExtraSmallScreen = useMediaQuery(muiTheme.breakpoints.down("xs"));
 
   const [open, setOpen] = useState(false);
@@ -37,33 +36,21 @@ function Navbar() {
 
   const useStyles = {
     navMenu: {
-      fontSize: isExtraSmallScreen
-        ? "2rem"
-        : isSmallScreen
-        ? "2.5rem"
-        : "2.5rem",
-      color: theme.tertiary,
+      fontSize: isExtraSmallScreen ? "2.5rem" : "1.67rem",
+      color: theme.secondary,
       cursor: "pointer",
-      transform: "translateY(-10px)",
-      transition: "color 0.3s",
-      position: "fixed",
-      top: "30px",
-      right: "30px",
       "&:hover": {
-        color: theme.primary,
+        color: theme.tertiary,
       },
     },
     MuiDrawer: {
-      padding: "0em 1.8em",
-      width: isSmallScreen ? "10em" : "12em",
-      fontFamily: " var(--primaryFont)",
-      fontStyle: " normal",
-      fontWeight: " normal",
-      fontSize: " 1.618rem",
+      padding: "1em",
+      width: isSmallScreen ? "16em" : "13em",
+      fontFamily: "var(--primaryFont)",
+      fontStyle: "normal",
+      fontWeight: "normal",
+      fontSize: "1rem",
       background: theme.secondary,
-      overflow: "hidden",
-      // borderTopRightRadius: '40px',
-      // borderBottomRightRadius: '40px',
     },
     closebtnIcon: {
       fontSize: "2rem",
@@ -87,7 +74,8 @@ function Navbar() {
       height: isSmallScreen ? "55px" : "60px",
       display: "flex",
       alignItems: "center",
-      justifyContent: "space-evenly",
+      justifyContent: "flex-start",
+      gap: "1.618rem",
       padding: isSmallScreen ? "0 25px" : "0 30px",
       boxSizing: "border-box",
       border: "2px solid",
@@ -107,6 +95,27 @@ function Navbar() {
     drawerIcon: {
       fontSize: isSmallScreen ? "1.385rem" : "1.6rem",
     },
+    navItem: {
+      fontFamily: "var(--primaryFont)",
+      padding: "0 1rem",
+      color: theme.secondary,
+      textDecoration: "none",
+      fontSize: "1rem",
+      fontWeight: 300,
+      transition: "color 0.3s",
+      "&:hover": {
+        color: theme.primary,
+      },
+    },
+    navItemActive: {
+      borderBottom: `2px solid ${theme.primary}`,
+    },
+    navBar: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "flex-end",
+      width: "100%",
+    },
   };
 
   const shortname = (name) => {
@@ -122,147 +131,175 @@ function Navbar() {
       <div className="navbar--container">
         <h1 style={{ color: theme.secondary }}>{shortname(headerData.name)}</h1>
 
-        <NavLink to="/#contacts" smooth={true} spy="true" duration={2000}>
-          <Button style={{ color: theme.secondary }}>Contact</Button>
-        </NavLink>
-
-        {/* <IoMenuSharp
-                    className={useStyles.navMenu}
-                    onClick={handleDrawerOpen}
-                    aria-label='Menu'
-                    id='navicon'
-                /> */}
-      </div>
-      {/* <Drawer
-                variant='temporary'
-                onClose={(event, reason) => {
-                    if (reason !== 'backdropClick' && reason !== 'escapeKeyDown') {
-                        handleDrawerClose();
-                    }
-                }}
-                anchor='right'
-                open={open}
-                PaperProps={{ style: useStyles.MuiDrawer }}
-                className='drawer'
-                disableScrollLock={true}
+        {!isSmallScreen ? (
+          <div style={useStyles.navBar}>
+            <NavLink
+              to="#"
+              smooth={true}
+              spy="true"
+              duration={2000}
+              style={useStyles.navItem}
+              activeStyle={useStyles.navItemActive}
             >
-                <div className='div-closebtn'>
-                    <CloseIcon
-                        onClick={handleDrawerClose}
-                        onKeyDown={(e) => {
-                            if (e.key === ' ' || e.key === 'Enter') {
-                                e.preventDefault();
-                                handleDrawerClose();
-                            }
-                        }}
-                        className={useStyles.closebtnIcon}
-                        role='button'
-                        tabIndex='0'
-                        aria-label='Close'
-                    />
-                </div>
-                <br />
+              Home
+            </NavLink>
+            <NavLink
+              to="/#about"
+              smooth={true}
+              spy="true"
+              duration={2000}
+              style={useStyles.navItem}
+              activeStyle={useStyles.navItemActive}
+            >
+              About
+            </NavLink>
+            <NavLink
+              to="/#education"
+              smooth={true}
+              spy="true"
+              duration={2000}
+              style={useStyles.navItem}
+              activeStyle={useStyles.navItemActive}
+            >
+              Education
+            </NavLink>
+            <NavLink
+              to="/#projects"
+              smooth={true}
+              spy="true"
+              duration={2000}
+              style={useStyles.navItem}
+              activeStyle={useStyles.navItemActive}
+            >
+              Projects
+            </NavLink>
+            <NavLink
+              to="/#experience"
+              smooth={true}
+              spy="true"
+              duration={2000}
+              style={useStyles.navItem}
+              activeStyle={useStyles.navItemActive}
+            >
+              Experience
+            </NavLink>
+          </div>
+        ) : (
+          <IoMenuSharp
+            fontSize={"2em"}
+            style={useStyles.navMenu}
+            onClick={handleDrawerOpen}
+            aria-label="Menu"
+            id="navicon"
+          />
+        )}
+      </div>
 
-                <div onClick={handleDrawerClose}>
-                    <div className='navLink--container'>
-                        <Fade left>
-                            <NavLink
-                                to='/'
-                                smooth={true}
-                                spy='true'
-                                duration={2000}
-                            >
-                                <div className={useStyles.drawerItem}>
-                                    <IoHomeSharp className={useStyles.drawerIcon} />
-                                    <span className={useStyles.drawerLinks}>
-                                        Home
-                                    </span>
-                                </div>
-                            </NavLink>
-                        </Fade>
+      {/* Drawer for Small Screens */}
+      {isSmallScreen && (
+        <Drawer
+          variant="temporary"
+          onClose={(event, reason) => {
+            if (reason !== "backdropClick" && reason !== "escapeKeyDown") {
+              handleDrawerClose();
+            }
+          }}
+          anchor="right"
+          open={open}
+          PaperProps={{ style: useStyles.MuiDrawer }}
+          className="drawer"
+          disableScrollLock={true}
+        >
+          <div className="div-closebtn">
+            <CloseIcon
+              onClick={handleDrawerClose}
+              onKeyDown={(e) => {
+                if (e.key === " " || e.key === "Enter") {
+                  e.preventDefault();
+                  handleDrawerClose();
+                }
+              }}
+              className={useStyles.closebtnIcon}
+              role="button"
+              tabIndex="0"
+              aria-label="Close"
+            />
+          </div>
 
-                        <Fade left>
-                            <NavLink
-                                to='/#about'
-                                smooth={true}
-                                spy='true'
-                                duration={2000}
-                            >
-                                <div className={useStyles.drawerItem}>
-                                    <FaUser className={useStyles.drawerIcon} />
-                                    <span className={useStyles.drawerLinks}>
-                                        About
-                                    </span>
-                                </div>
-                            </NavLink>
-                        </Fade>
+          <div onClick={handleDrawerClose}>
+            <div className="navLink--container">
+              <Fade left>
+                <NavLink to="#" smooth={true} spy="true" duration={2000}>
+                  <div style={useStyles.drawerItem}>
+                    <IoHomeSharp className={useStyles.drawerIcon} />
+                    <span className={useStyles.drawerLinks}>Home</span>
+                  </div>
+                </NavLink>
+              </Fade>
 
-                        <Fade left>
-                            <NavLink
-                                to='/#education'
-                                smooth={true}
-                                spy='true'
-                                duration={2000}
-                            >
-                                <div className={useStyles.drawerItem}>
-                                    <HiDocumentText className={useStyles.drawerIcon} />
-                                    <span className={useStyles.drawerLinks}>
-                                        Education
-                                    </span>
-                                </div>
-                            </NavLink>
-                        </Fade>
+              <Fade left>
+                <NavLink to="/#about" smooth={true} spy="true" duration={2000}>
+                  <div style={useStyles.drawerItem}>
+                    <FaUser className={useStyles.drawerIcon} />
+                    <span className={useStyles.drawerLinks}>About</span>
+                  </div>
+                </NavLink>
+              </Fade>
 
-                        <Fade left>
-                            <NavLink
-                                to='/#skills'
-                                smooth={true}
-                                spy='true'
-                                duration={2000}
-                            >
-                                <div className={useStyles.drawerItem}>
-                                    <BsFillGearFill className={useStyles.drawerIcon} />
-                                    <span className={useStyles.drawerLinks}>
-                                        Skills
-                                    </span>
-                                </div>
-                            </NavLink>
-                        </Fade>
+              <Fade left>
+                <NavLink
+                  to="/#education"
+                  smooth={true}
+                  spy="true"
+                  duration={2000}
+                >
+                  <div style={useStyles.drawerItem}>
+                    <FaGraduationCap className={useStyles.drawerIcon} />
+                    <span className={useStyles.drawerLinks}>Education</span>
+                  </div>
+                </NavLink>
+              </Fade>
 
-                        <Fade left>
-                            <NavLink
-                                to='/#projects'
-                                smooth={true}
-                                spy='true'
-                                duration={2000}
-                            >
-                                <div className={useStyles.drawerItem}>
-                                    <FaFolderOpen className={useStyles.drawerIcon} />
-                                    <span className={useStyles.drawerLinks}>
-                                        Projects
-                                    </span>
-                                </div>
-                            </NavLink>
-                        </Fade>
+              <Fade left>
+                <NavLink to="/#skills" smooth={true} spy="true" duration={2000}>
+                  <div style={useStyles.drawerItem}>
+                    <FaBrain className={useStyles.drawerIcon} />
+                    <span className={useStyles.drawerLinks}>Skills</span>
+                  </div>
+                </NavLink>
+              </Fade>
 
-                        <Fade left>
-                            <NavLink
-                                to='/#contacts'
-                                smooth={true}
-                                spy='true'
-                                duration={2000}
-                            >
-                                <div className={useStyles.drawerItem}>
-                                    <MdPhone className={useStyles.drawerIcon} />
-                                    <span className={useStyles.drawerLinks}>
-                                        Contact
-                                    </span>
-                                </div>
-                            </NavLink>
-                        </Fade>
-                    </div>
-                </div>
-            </Drawer> */}
+              <Fade left>
+                <NavLink
+                  to="/#projects"
+                  smooth={true}
+                  spy="true"
+                  duration={2000}
+                >
+                  <div style={useStyles.drawerItem}>
+                    <FaFolderOpen className={useStyles.drawerIcon} />
+                    <span className={useStyles.drawerLinks}>Projects</span>
+                  </div>
+                </NavLink>
+              </Fade>
+
+              <Fade left>
+                <NavLink
+                  to="/#contacts"
+                  smooth={true}
+                  spy="true"
+                  duration={2000}
+                >
+                  <div style={useStyles.drawerItem}>
+                    <MdPhone className={useStyles.drawerIcon} />
+                    <span className={useStyles.drawerLinks}>Contact</span>
+                  </div>
+                </NavLink>
+              </Fade>
+            </div>
+          </div>
+        </Drawer>
+      )}
     </div>
   );
 }
