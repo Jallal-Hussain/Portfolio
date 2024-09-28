@@ -1,5 +1,5 @@
 import resume from '../assets/pdf/resume.pdf'
-import profileimg from '../assets/png/Blue gradient background personal avatar-circle.png'
+import profileimg from '../assets/png/landing/Blue gradient background personal avatar-circle.png'
 
 export const headerData = {
     name: 'Jalal Hussain',

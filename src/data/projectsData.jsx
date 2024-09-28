@@ -1,11 +1,4 @@
-// import one from "../assets/svg/projects/one.svg";
-// import two from "../assets/svg/projects/two.svg";
-// import three from "../assets/svg/projects/three.svg";
-// import four from "../assets/svg/projects/four.svg";
-// import five from "../assets/svg/projects/five.svg";
-// import six from "../assets/svg/projects/six.svg";
-// import seven from "../assets/svg/projects/seven.svg";
-// import eight from "../assets/svg/projects/eight.svg";
+import portfolio from "../assets/png/Projects/portfolio_landing_page.jpg"; 
 
 export const projectsData = [
   {
@@ -40,12 +33,12 @@ export const projectsData = [
 
   {
     id: 4,
-    projectName: "",
-    projectDesc: "",
-    tags: [""],
-    code: "",
+    projectName: "Portfolio",
+    projectDesc: "This is my portfolio project using React and react librariesI developed a personal portfolio using React and integrated various libraries, such as Material UI (MUI) for responsive and modern UI components. Custom CSS and additional libraries were utilized to enhance the design, ensuring a smooth and visually appealing user experience. The portfolio showcases my projects, skills, and professional background with an intuitive layout and seamless navigation.",
+    tags: ["Personal Portfolio", "React", "MUI"],
+    code: "https://github.com/Jallal-Hussain/Portfolio",
     demo: "",
-    image: "",
+    image: portfolio,
   },
   {
     id: 5,
