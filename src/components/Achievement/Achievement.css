@@ -108,7 +108,7 @@
   text-align: center;
 }
 
-.achievecard-imgcontainer > img {
+.achievecard-imgcontainer > a > img {
   width: 150px;
   height: 130px;
   border-radius: 5px;
