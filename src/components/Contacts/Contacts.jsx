@@ -12,7 +12,7 @@ import {
   FaInstagram,
 } from "react-icons/fa";
 import { AiOutlineSend, AiOutlineCheckCircle } from "react-icons/ai";
-import { FiPhone, FiAtSign } from "react-icons/fi";
+import { FiPhone, FiMail } from "react-icons/fi";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 
 import { ThemeContext } from "../../contexts/ThemeContext";
@@ -238,11 +238,11 @@ function Contacts() {
             </form>
             <Snackbar
               anchorOrigin={{
-                vertical: "top",
-                horizontal: "center",
+                vertical: "bottom",
+                horizontal: "left",
               }}
               open={open}
-              autoHideDuration={4000}
+              autoHideDuration={5000}
               onClose={handleClose}
             >
               <SnackbarContent
@@ -269,16 +269,17 @@ function Contacts() {
           </div>
 
           <div className="contacts-details">
-            <a
+          <img src={theme.contactsimg} alt="contacts" className="contacts--img" />
+            <div
               // href={`mailto:${contactsData.email}`}
               className="personal-details"
             >
               <div className={useStyles.detailsIcon}>
-                <FiAtSign />
+                <FiMail />
               </div>
               <p style={{ color: theme.tertiary }}>{contactsData.email}</p>
-            </a>
-            <a
+            </div>
+            <div
               // href={`tel:${contactsData.phone}`}
               className="personal-details"
             >
@@ -286,7 +287,7 @@ function Contacts() {
                 <FiPhone />
               </div>
               <p style={{ color: theme.tertiary }}>{contactsData.phone}</p>
-            </a>
+            </div>
             <div className="personal-details">
               <div className={useStyles.detailsIcon}>
                 <HiOutlineLocationMarker />
@@ -410,7 +411,6 @@ function Contacts() {
           </div>
         </div>
       </div>
-      {/* <img src={theme.contactsimg} alt="contacts" className="contacts--img" /> */}
     </div>
   );
 }
