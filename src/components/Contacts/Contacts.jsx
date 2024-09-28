@@ -269,7 +269,7 @@ function Contacts() {
           </div>
 
           <div className="contacts-details">
-          <img src={theme.contactsimg} alt="contacts" className="contacts--img" />
+          {/* <img src={theme.contactsimg} alt="contacts" className="contacts--img" /> */}
             <div
               // href={`mailto:${contactsData.email}`}
               className="personal-details"
