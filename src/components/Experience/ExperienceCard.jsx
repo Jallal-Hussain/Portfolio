@@ -7,7 +7,6 @@ import expImgWhite from "../../assets/svg/experience/expImgWhite.svg";
 import expImgBlack from "../../assets/svg/experience/expImgBlack.svg";
 
 import "./Experience.css";
-
 function ExperienceCard({ id, company, jobtitle, startYear, endYear }) {
   const { theme } = useContext(ThemeContext);
 
@@ -22,7 +21,7 @@ function ExperienceCard({ id, company, jobtitle, startYear, endYear }) {
 
   return (
     <Fade bottom>
-      <div key={id} className={`experience-card ${useStyles.experienceCard}`}>
+      <div key={id} className="experience-card">
         <div className="expcard-img" style={{ backgroundColor: theme.primary }}>
           <img
             src={theme.type === "light" ? expImgBlack : expImgWhite}

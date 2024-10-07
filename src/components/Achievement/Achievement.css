@@ -211,6 +211,13 @@
   .achievement-cards {
     width: 100%;
   }
+  .achievement-card {
+    flex-direction: column;
+  }
+
+  .achievecard-imgcontainer{
+    display: none;
+  }
 
   .achievement-body h4 {
     font-size: 1.5rem;

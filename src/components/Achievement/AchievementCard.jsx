@@ -23,7 +23,7 @@ function AchievementCard({ id, title, details, date, field, image }) {
 
   return (
     <Fade bottom>
-      <div key={id} className={`achievement-card ${useStyles.achievementCard}`}>
+      <div key={id} className="achievement-card">
         <div className="achievecard-content">
           <div className="achievecard-details1">
             <h2 style={{ color: theme.tertiary }}>{title}</h2>
