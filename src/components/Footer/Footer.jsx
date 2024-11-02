@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import "./Footer.css";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { headerData } from "../../data/headerData";
+import { Link } from "react-router-dom";
 
 function Footer() {
   const { theme } = useContext(ThemeContext);
@@ -10,48 +11,63 @@ function Footer() {
     <footer className="footer" style={{ backgroundColor: theme.primary }}>
       <div className="footer-content">
         <div className="footer-section newsletter">
-          <h3>Stay Updated</h3>
           <form onSubmit={(e) => e.preventDefault()}>
-            <input type="email" placeholder="Enter your email" aria-label="Email for newsletter" />
-            <button type="submit">Subscribe</button>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              aria-label="Email for newsletter" 
+            />
+            <button
+              type="submit"
+              style={{ backgroundColor: theme.secondary, color: theme.primary }}
+            >
+              Subscribe
+            </button>
           </form>
           <p className="terms">*Subscribe to receive updates and news.</p>
         </div>
         <div className="footer-section links">
           <div className="link-column">
             <h3>Quick Links</h3>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#skills">Skills</a>
-            <a href="#contact">Contact</a>
+            <Link to="/">Home</Link>
+            <Link to="/about">About</Link>
+            <Link to="/projects">Projects</Link>
+            <Link to="/skills">Skills</Link>
+            <Link to="/contacts">Contact</Link>
           </div>
           <div className="link-column">
             <h3>Connect</h3>
-            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer">Twitter</a>
-            <a href="#resume">Resume</a>
+            <Link
+              to={{ pathname: "https://linkedin.com/in/yourprofile" }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </Link>
+            <Link
+              to={{ pathname: "https://github.com/yourprofile" }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </Link>
+            <Link to="/resume">Resume</Link>
           </div>
           <div className="link-column">
             <h3>More Info</h3>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#blog">Blog</a>
-            <a href="#achievements">Achievements</a>
-            <a href="#testimonials">Testimonials</a>
+            <Link to="/portfolio">Portfolio</Link>
+            <Link to="/blog">Blog</Link>
+            <Link to="/achievements">Achievements</Link>
+            <Link to="/testimonials">Testimonials</Link>
           </div>
         </div>
       </div>
       <div className="footer-bottom">
-        <div className="powered-by">
-          Powered By
-          <a href="https://yourwebsite.com" target="_blank" rel="noopener noreferrer">
-            {headerData.name}
-          </a>
-        </div>
         <div className="company-info">
-          <p>Made in {headerData.location}</p>
-          <p>&copy; {new Date().getFullYear()} {headerData.name}. All Rights Reserved.</p>
+          <p>
+            &copy; {new Date().getFullYear()} {headerData.name}. All Rights
+            Reserved.
+          </p>
         </div>
         <div className="certification">
           {/* Add your certification or badge here */}
