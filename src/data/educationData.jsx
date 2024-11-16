@@ -16,7 +16,7 @@ export const educationData = [
     {
         id: 3,
         institution: 'Jinnah Public and College, Skardu',
-        course: 'Science',
+        course: 'Matric',
         startYear: '2019',
         endYear: '2021'
     },
