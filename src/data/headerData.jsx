@@ -1,4 +1,4 @@
-import resume from '../assets/pdf/resume.pdf'
+import resume from '../assets/pdf/MERN_Resume.pdf'
 import profileimg from '../assets/png/landing/Blue gradient background personal avatar-circle.png'
 
 export const headerData = {
