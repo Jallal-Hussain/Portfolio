@@ -56,9 +56,9 @@ function Footer() {
           <div className="link-column">
             <h3>More Info</h3>
             <Link to="/portfolio">Portfolio</Link>
-            <Link to="/blog">Blog</Link>
+            {/* <Link to="/blog">Blog</Link> */}
             <Link to="/achievements">Achievements</Link>
-            <Link to="/testimonials">Testimonials</Link>
+            {/* <Link to="/testimonials">Testimonials</Link> */}
           </div>
         </div>
       </div>

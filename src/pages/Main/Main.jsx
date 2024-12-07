@@ -34,8 +34,8 @@ function Main() {
       <Experience />
       <Services />
       <Achievement />
-      <Testimonials />
-      <Blog />
+      {/* <Testimonials /> */}
+      {/* <Blog /> */}
       <Contacts />
       <Footer />
     </div>
