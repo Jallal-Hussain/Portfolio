@@ -41,6 +41,9 @@ function Footer() {
             <NavLink to="/#education" smooth={true} spy="true" duration={2000}>
               Education
             </NavLink>
+            <NavLink to="/#achievement" smooth={true} spy="true" duration={2000}>
+              Achievements
+            </NavLink>
           </div>
           <div className="link-column">
             <h3>Connect</h3>
