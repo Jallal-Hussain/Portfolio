@@ -3,8 +3,8 @@ import "./Footer.css";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { headerData } from "../../data/headerData";
 import { socialsData } from "../../data/socialsData";
-import { Link } from "react-router-dom";
 import { NavHashLink as NavLink } from "react-router-hash-link";
+import { Button } from "@mui/material";
 
 function Footer() {
   const { theme } = useContext(ThemeContext);
@@ -21,6 +21,7 @@ function Footer() {
             />
             <button
               type="submit"
+              className="subscribe-button"
               style={{ backgroundColor: theme.secondary, color: theme.primary }}
             >
               Subscribe
@@ -49,7 +50,19 @@ function Footer() {
             <a href={socialsData.github} target="_blank" rel="noreferrer">
               Github
             </a>
-            <Link to="/resume">Resume</Link>
+            {headerData.resumePdf && (
+              <Button
+                variant="contained"
+                color="primary"
+                style={{
+                  backgroundColor: theme.secondary,
+                  color: theme.primary,
+                }}
+                onClick={() => window.open(headerData.resumePdf, "_blank")}
+              >
+                Download CV
+              </Button>
+            )}
           </div>
           <div className="link-column">
             <h3>More Info</h3>
