@@ -60,7 +60,7 @@ function Projects() {
               ))}
             </div>
 
-            {projectsData.length > 3 && (
+            {projectsData.length > 4 && (
               <div className="projects--viewAll">
                 <Link to="/projects">
                   <Button sx={useStyles.viewAllBtn}>

@@ -42,13 +42,4 @@ export const projectsData = [
     demo: "",
     image: portfolio,
   },
-  {
-    id: 5,
-    projectName: "",
-    projectDesc: "",
-    tags: [""],
-    code: "",
-    demo: "",
-    image: "",
-  },
 ];
