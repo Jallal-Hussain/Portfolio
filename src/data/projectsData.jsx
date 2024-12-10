@@ -1,4 +1,6 @@
 import portfolio from "../assets/png/Projects/portfolio_landing_page.jpg"; 
+import amazon from "../assets/png/Projects/amazon_clone.jpg"; 
+import netflix from "../assets/png/Projects/netflix_clone.jpg"; 
 
 export const projectsData = [
   {
@@ -9,7 +11,7 @@ export const projectsData = [
     tags: ["Html", "Css", "JavaScript", "Boostrap"],
     code: "", // Replace with actual link
     demo: "", // Replace with actual link
-    image: "", // Replace with actual image link
+    image: amazon,
   },
   {
     id: 2,
@@ -18,7 +20,7 @@ export const projectsData = [
     tags: ["Html", "Css", "JavaScript", "Boostrap"],
     code: "", // Replace with actual link
     demo: "", // Replace with actual link
-    image: "", // Replace with actual image link
+    image: netflix,
   },
   {
     id: 3,
