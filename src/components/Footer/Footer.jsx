@@ -2,7 +2,9 @@ import { useContext } from "react";
 import "./Footer.css";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { headerData } from "../../data/headerData";
+import { socialsData } from "../../data/socialsData";
 import { Link } from "react-router-dom";
+import { NavHashLink as NavLink } from "react-router-hash-link";
 
 function Footer() {
   const { theme } = useContext(ThemeContext);
@@ -15,7 +17,7 @@ function Footer() {
             <input
               type="email"
               placeholder="Enter your email"
-              aria-label="Email for newsletter" 
+              aria-label="Email for newsletter"
             />
             <button
               type="submit"
@@ -29,36 +31,34 @@ function Footer() {
         <div className="footer-section links">
           <div className="link-column">
             <h3>Quick Links</h3>
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-            <Link to="/projects">Projects</Link>
-            <Link to="/skills">Skills</Link>
-            <Link to="/contacts">Contact</Link>
+            <NavLink to="#" smooth={true} spy="true" duration={2000}>
+              Home
+            </NavLink>
+            <NavLink to="/#about" smooth={true} spy="true" duration={2000}>
+              About
+            </NavLink>
+            <NavLink to="/#education" smooth={true} spy="true" duration={2000}>
+              Education
+            </NavLink>
           </div>
           <div className="link-column">
             <h3>Connect</h3>
-            <Link
-              to={{ pathname: "https://linkedin.com/in/yourprofile" }}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href={socialsData.linkedIn} target="_blank" rel="noreferrer">
               LinkedIn
-            </Link>
-            <Link
-              to={{ pathname: "https://github.com/yourprofile" }}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
-            </Link>
+            </a>
+            <a href={socialsData.github} target="_blank" rel="noreferrer">
+              Github
+            </a>
             <Link to="/resume">Resume</Link>
           </div>
           <div className="link-column">
             <h3>More Info</h3>
-            <Link to="/portfolio">Portfolio</Link>
-            {/* <Link to="/blog">Blog</Link> */}
-            <Link to="/achievements">Achievements</Link>
-            {/* <Link to="/testimonials">Testimonials</Link> */}
+            <NavLink to="/#projects" smooth={true} spy="true" duration={2000}>
+              Projects
+            </NavLink>
+            <NavLink to="/#experience" smooth={true} spy="true" duration={2000}>
+              Experience
+            </NavLink>
           </div>
         </div>
       </div>
