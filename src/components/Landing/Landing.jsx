@@ -153,6 +153,7 @@ function Landing() {
             <div className="lcr-buttonContainer">
               {headerData.resumePdf && (
                 <Button
+                  className="dnl-btn"
                   variant="contained"
                   color="primary"
                   sx={{
@@ -172,6 +173,7 @@ function Landing() {
               )}
               <NavLink to="/#contacts" smooth={true} spy="true" duration={2000}>
                 <Button
+                  className="cnt-btn"
                   variant="contained"
                   color="primary"
                   sx={{
