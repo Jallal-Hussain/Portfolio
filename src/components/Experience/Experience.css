@@ -163,6 +163,10 @@
     flex-direction: column;
     align-items: center;
   }
+
+  .experience-card{
+    width: 320px;
+  }
   .experience > h1 {
     font-size: 2.5rem;
   }
