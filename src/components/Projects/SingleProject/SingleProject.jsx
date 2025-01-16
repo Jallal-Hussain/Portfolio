@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { FaPlay, FaCode } from "react-icons/fa";
 import { Fade } from "react-awesome-reveal";
 
@@ -30,7 +30,6 @@ function SingleProject({ id, name, desc, tags, code, demo, image }) {
     icon: {
       fontSize: "1.1rem",
       transition: "all 0.2s",
-      "&:hover": {},
     },
   };
 
@@ -42,13 +41,15 @@ function SingleProject({ id, name, desc, tags, code, demo, image }) {
         style={{ backgroundColor: theme.primary400 }}
       >
         <div className="projectContent">
+          <div className="img-box">
+            <img src={image ? image : placeholder} alt={name} />
+          </div>
           <h2
             id={name.replace(" ", "-").toLowerCase()}
             style={{ color: theme.tertiary }}
           >
             {name}
           </h2>
-          <img src={image ? image : placeholder} alt={name} />
           <div className="project--showcaseBtn">
             <a
               href={demo}
