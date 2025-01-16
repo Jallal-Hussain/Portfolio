@@ -1,5 +1,4 @@
-import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import { IoMenuSharp, IoHomeSharp } from "react-icons/io5";
 import { FaBrain, FaGraduationCap } from "react-icons/fa6";
@@ -13,6 +12,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import "./Navbar.css";
 import { headerData } from "../../data/headerData";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { NavHashLink as NavLink } from "react-router-hash-link";
 
 const useStyles = (theme, isSmallScreen, isExtraSmallScreen) => ({
   navMenu: {
@@ -132,7 +132,7 @@ function Navbar() {
 
         {!isSmallScreen ? (
           <div style={styles.navBar}>
-            <Link
+            <NavLink
               to="#"
               smooth={true}
               spy="true"
@@ -141,8 +141,8 @@ function Navbar() {
               activeStyle={styles.navItemActive}
             >
               Home
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               to="/#about"
               smooth={true}
               spy="true"
@@ -151,8 +151,8 @@ function Navbar() {
               activeStyle={styles.navItemActive}
             >
               About
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               to="/#education"
               smooth={true}
               spy="true"
@@ -161,8 +161,8 @@ function Navbar() {
               activeStyle={styles.navItemActive}
             >
               Education
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               to="/#projects"
               smooth={true}
               spy="true"
@@ -171,8 +171,8 @@ function Navbar() {
               activeStyle={styles.navItemActive}
             >
               Projects
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               to="/#experience"
               smooth={true}
               spy="true"
@@ -181,7 +181,7 @@ function Navbar() {
               activeStyle={styles.navItemActive}
             >
               Experience
-            </Link>
+            </NavLink>
           </div>
         ) : (
           <IoMenuSharp
@@ -228,25 +228,25 @@ function Navbar() {
           <div onClick={handleDrawerClose}>
             <div className="navLink--container">
               <Fade left>
-                <Link to="#" smooth={true} spy="true" duration={2000}>
+                <NavLink to="#" smooth={true} spy="true" duration={2000}>
                   <div style={styles.drawerItem}>
                     <IoHomeSharp className={styles.drawerIcon} />
                     <span className={styles.drawerLinks}>Home</span>
                   </div>
-                </Link>
+                </NavLink>
               </Fade>
 
               <Fade left>
-                <Link to="/#about" smooth={true} spy="true" duration={2000}>
+                <NavLink to="/#about" smooth={true} spy="true" duration={2000}>
                   <div style={styles.drawerItem}>
                     <FaUser className={styles.drawerIcon} />
                     <span className={styles.drawerLinks}>About</span>
                   </div>
-                </Link>
+                </NavLink>
               </Fade>
 
               <Fade left>
-                <Link
+                <NavLink
                   to="/#education"
                   smooth={true}
                   spy="true"
@@ -256,20 +256,20 @@ function Navbar() {
                     <FaGraduationCap className={styles.drawerIcon} />
                     <span className={styles.drawerLinks}>Education</span>
                   </div>
-                </Link>
+                </NavLink>
               </Fade>
 
               <Fade left>
-                <Link to="/#skills" smooth={true} spy="true" duration={2000}>
+                <NavLink to="/#skills" smooth={true} spy="true" duration={2000}>
                   <div style={styles.drawerItem}>
                     <FaBrain className={styles.drawerIcon} />
                     <span className={styles.drawerLinks}>Skills</span>
                   </div>
-                </Link>
+                </NavLink>
               </Fade>
 
               <Fade left>
-                <Link
+                <NavLink
                   to="/#projects"
                   smooth={true}
                   spy="true"
@@ -279,11 +279,11 @@ function Navbar() {
                     <FaFolderOpen className={styles.drawerIcon} />
                     <span className={styles.drawerLinks}>Projects</span>
                   </div>
-                </Link>
+                </NavLink>
               </Fade>
 
               <Fade left>
-                <Link
+                <NavLink
                   to="/#contacts"
                   smooth={true}
                   spy="true"
@@ -293,7 +293,7 @@ function Navbar() {
                     <MdPhone className={styles.drawerIcon} />
                     <span className={styles.drawerLinks}>Contact</span>
                   </div>
-                </Link>
+                </NavLink>
               </Fade>
             </div>
           </div>
