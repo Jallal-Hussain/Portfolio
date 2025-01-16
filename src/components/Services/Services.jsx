@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useMemo } from "react";
 
 import { ThemeContext } from "../../contexts/ThemeContext";
 
@@ -9,6 +9,18 @@ import SingleService from "./SingleService/SingleService";
 
 function Services() {
   const { theme } = useContext(ThemeContext);
+
+  const renderedServices = useMemo(() => {
+    return servicesData.map((service) => (
+      <SingleService
+        key={service.id}
+        id={service.id}
+        title={service.title}
+        icon={service.icon}
+      />
+    ));
+  }, [servicesData]);
+
   return (
     <>
       {servicesData.length > 0 && (
@@ -26,14 +38,7 @@ function Services() {
               help you with any!
             </p>
             <div className="services-bodycontainer">
-              {servicesData.map((services) => (
-                <SingleService
-                  key={services.id}
-                  id={services.id}
-                  title={services.title}
-                  icon={services.icon}
-                />
-              ))}
+              {renderedServices}
             </div>
           </div>
         </div>

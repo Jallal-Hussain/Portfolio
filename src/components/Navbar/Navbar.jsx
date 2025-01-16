@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
 import React, { useContext, useState } from "react";
-import { NavHashLink as NavLink } from "react-router-hash-link";
+import { Link } from "react-router-dom";
 import { Fade } from "react-awesome-reveal";
 import { IoMenuSharp, IoHomeSharp } from "react-icons/io5";
 import { FaBrain, FaGraduationCap } from "react-icons/fa6";
@@ -14,7 +13,90 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import "./Navbar.css";
 import { headerData } from "../../data/headerData";
 import { ThemeContext } from "../../contexts/ThemeContext";
-import { Margin } from "@mui/icons-material";
+
+const useStyles = (theme, isSmallScreen, isExtraSmallScreen) => ({
+  navMenu: {
+    fontSize: isExtraSmallScreen ? "2.5rem" : "1.67rem",
+    color: theme.secondary,
+    cursor: "pointer",
+    "&:hover": {
+      color: theme.tertiary,
+    },
+  },
+  MuiDrawer: {
+    padding: "1em",
+    width: isSmallScreen ? "16em" : "13em",
+    fontFamily: "var(--primaryFont)",
+    fontStyle: "normal",
+    fontWeight: "normal",
+    fontSize: "1rem",
+    background: theme.secondary,
+  },
+  closebtnIcon: {
+    fontSize: "2rem",
+    fontWeight: "bold",
+    cursor: "pointer",
+    color: theme.primary,
+    position: "absolute",
+    right: isSmallScreen ? 20 : 40,
+    top: isSmallScreen ? 20 : 40,
+    transition: "color 0.2s",
+    "&:hover": {
+      color: theme.tertiary,
+    },
+  },
+  drawerItem: {
+    margin: "2rem auto",
+    borderRadius: "78.8418px",
+    background: theme.secondary,
+    color: theme.primary,
+    width: isSmallScreen ? "100%" : "85%",
+    height: isSmallScreen ? "55px" : "60px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    gap: "1.618rem",
+    padding: isSmallScreen ? "0 25px" : "0 30px",
+    boxSizing: "border-box",
+    border: "2px solid",
+    borderColor: theme.primary,
+    transition: "background-color 0.2s, color 0.2s",
+    "&:hover": {
+      background: theme.primary,
+      color: theme.secondary,
+    },
+  },
+  drawerLinks: {
+    fontFamily: "var(--primaryFont)",
+    width: "50%",
+    fontSize: isSmallScreen ? "1.125rem" : "1.3rem",
+    fontWeight: 600,
+  },
+  drawerIcon: {
+    fontSize: isSmallScreen ? "1.385rem" : "1.6rem",
+  },
+  navItem: {
+    fontFamily: "var(--primaryFont)",
+    padding: "0 1rem",
+    color: theme.secondary,
+    textDecoration: "none",
+    fontSize: "1rem",
+    fontWeight: 300,
+    transition: "color 0.3s",
+    "&:hover": {
+      borderBottom: `2px solid ${theme.secondary}`,
+    },
+  },
+  navItemActive: {
+    borderBottom: `2px solid ${theme.primary}`,
+  },
+  navBar: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    width: "100%",
+  },
+});
 
 function Navbar() {
   const { theme, setHandleDrawer } = useContext(ThemeContext);
@@ -23,6 +105,7 @@ function Navbar() {
   const isExtraSmallScreen = useMediaQuery(muiTheme.breakpoints.down("xs"));
 
   const [open, setOpen] = useState(false);
+  const styles = useStyles(theme, isSmallScreen, isExtraSmallScreen);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -32,90 +115,6 @@ function Navbar() {
   const handleDrawerClose = () => {
     setOpen(false);
     setHandleDrawer();
-  };
-
-  const useStyles = {
-    navMenu: {
-      fontSize: isExtraSmallScreen ? "2.5rem" : "1.67rem",
-      color: theme.secondary,
-      cursor: "pointer",
-      "&:hover": {
-        color: theme.tertiary,
-      },
-    },
-    MuiDrawer: {
-      padding: "1em",
-      width: isSmallScreen ? "16em" : "13em",
-      fontFamily: "var(--primaryFont)",
-      fontStyle: "normal",
-      fontWeight: "normal",
-      fontSize: "1rem",
-      background: theme.secondary,
-    },
-    closebtnIcon: {
-      fontSize: "2rem",
-      fontWeight: "bold",
-      cursor: "pointer",
-      color: theme.primary,
-      position: "absolute",
-      right: isSmallScreen ? 20 : 40,
-      top: isSmallScreen ? 20 : 40,
-      transition: "color 0.2s",
-      "&:hover": {
-        color: theme.tertiary,
-      },
-    },
-    drawerItem: {
-      margin: "2rem auto",
-      borderRadius: "78.8418px",
-      background: theme.secondary,
-      color: theme.primary,
-      width: isSmallScreen ? "100%" : "85%",
-      height: isSmallScreen ? "55px" : "60px",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "flex-start",
-      gap: "1.618rem",
-      padding: isSmallScreen ? "0 25px" : "0 30px",
-      boxSizing: "border-box",
-      border: "2px solid",
-      borderColor: theme.primary,
-      transition: "background-color 0.2s, color 0.2s",
-      "&:hover": {
-        background: theme.primary,
-        color: theme.secondary,
-      },
-    },
-    drawerLinks: {
-      fontFamily: "var(--primaryFont)",
-      width: "50%",
-      fontSize: isSmallScreen ? "1.125rem" : "1.3rem",
-      fontWeight: 600,
-    },
-    drawerIcon: {
-      fontSize: isSmallScreen ? "1.385rem" : "1.6rem",
-    },
-    navItem: {
-      fontFamily: "var(--primaryFont)",
-      padding: "0 1rem",
-      color: theme.secondary,
-      textDecoration: "none",
-      fontSize: "1rem",
-      fontWeight: 300,
-      transition: "color 0.3s",
-      "&:hover": {
-        color: theme.primary,
-      },
-    },
-    navItemActive: {
-      borderBottom: `2px solid ${theme.primary}`,
-    },
-    navBar: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "flex-end",
-      width: "100%",
-    },
   };
 
   const shortname = (name) => {
@@ -132,62 +131,62 @@ function Navbar() {
         <h1 style={{ color: theme.secondary }}>{shortname(headerData.name)}</h1>
 
         {!isSmallScreen ? (
-          <div style={useStyles.navBar}>
-            <NavLink
+          <div style={styles.navBar}>
+            <Link
               to="#"
               smooth={true}
               spy="true"
               duration={2000}
-              style={useStyles.navItem}
-              activeStyle={useStyles.navItemActive}
+              style={styles.navItem}
+              activeStyle={styles.navItemActive}
             >
               Home
-            </NavLink>
-            <NavLink
+            </Link>
+            <Link
               to="/#about"
               smooth={true}
               spy="true"
               duration={2000}
-              style={useStyles.navItem}
-              activeStyle={useStyles.navItemActive}
+              style={styles.navItem}
+              activeStyle={styles.navItemActive}
             >
               About
-            </NavLink>
-            <NavLink
+            </Link>
+            <Link
               to="/#education"
               smooth={true}
               spy="true"
               duration={2000}
-              style={useStyles.navItem}
-              activeStyle={useStyles.navItemActive}
+              style={styles.navItem}
+              activeStyle={styles.navItemActive}
             >
               Education
-            </NavLink>
-            <NavLink
+            </Link>
+            <Link
               to="/#projects"
               smooth={true}
               spy="true"
               duration={2000}
-              style={useStyles.navItem}
-              activeStyle={useStyles.navItemActive}
+              style={styles.navItem}
+              activeStyle={styles.navItemActive}
             >
               Projects
-            </NavLink>
-            <NavLink
+            </Link>
+            <Link
               to="/#experience"
               smooth={true}
               spy="true"
               duration={2000}
-              style={useStyles.navItem}
-              activeStyle={useStyles.navItemActive}
+              style={styles.navItem}
+              activeStyle={styles.navItemActive}
             >
               Experience
-            </NavLink>
+            </Link>
           </div>
         ) : (
           <IoMenuSharp
             fontSize={"2em"}
-            style={useStyles.navMenu}
+            style={styles.navMenu}
             onClick={handleDrawerOpen}
             aria-label="Menu"
             id="navicon"
@@ -206,7 +205,7 @@ function Navbar() {
           }}
           anchor="right"
           open={open}
-          PaperProps={{ style: useStyles.MuiDrawer }}
+          PaperProps={{ style: styles.MuiDrawer }}
           className="drawer"
           disableScrollLock={true}
         >
@@ -219,7 +218,7 @@ function Navbar() {
                   handleDrawerClose();
                 }
               }}
-              className={useStyles.closebtnIcon}
+              className={styles.closebtnIcon}
               role="button"
               tabIndex="0"
               aria-label="Close"
@@ -229,72 +228,72 @@ function Navbar() {
           <div onClick={handleDrawerClose}>
             <div className="navLink--container">
               <Fade left>
-                <NavLink to="#" smooth={true} spy="true" duration={2000}>
-                  <div style={useStyles.drawerItem}>
-                    <IoHomeSharp className={useStyles.drawerIcon} />
-                    <span className={useStyles.drawerLinks}>Home</span>
+                <Link to="#" smooth={true} spy="true" duration={2000}>
+                  <div style={styles.drawerItem}>
+                    <IoHomeSharp className={styles.drawerIcon} />
+                    <span className={styles.drawerLinks}>Home</span>
                   </div>
-                </NavLink>
+                </Link>
               </Fade>
 
               <Fade left>
-                <NavLink to="/#about" smooth={true} spy="true" duration={2000}>
-                  <div style={useStyles.drawerItem}>
-                    <FaUser className={useStyles.drawerIcon} />
-                    <span className={useStyles.drawerLinks}>About</span>
+                <Link to="/#about" smooth={true} spy="true" duration={2000}>
+                  <div style={styles.drawerItem}>
+                    <FaUser className={styles.drawerIcon} />
+                    <span className={styles.drawerLinks}>About</span>
                   </div>
-                </NavLink>
+                </Link>
               </Fade>
 
               <Fade left>
-                <NavLink
+                <Link
                   to="/#education"
                   smooth={true}
                   spy="true"
                   duration={2000}
                 >
-                  <div style={useStyles.drawerItem}>
-                    <FaGraduationCap className={useStyles.drawerIcon} />
-                    <span className={useStyles.drawerLinks}>Education</span>
+                  <div style={styles.drawerItem}>
+                    <FaGraduationCap className={styles.drawerIcon} />
+                    <span className={styles.drawerLinks}>Education</span>
                   </div>
-                </NavLink>
+                </Link>
               </Fade>
 
               <Fade left>
-                <NavLink to="/#skills" smooth={true} spy="true" duration={2000}>
-                  <div style={useStyles.drawerItem}>
-                    <FaBrain className={useStyles.drawerIcon} />
-                    <span className={useStyles.drawerLinks}>Skills</span>
+                <Link to="/#skills" smooth={true} spy="true" duration={2000}>
+                  <div style={styles.drawerItem}>
+                    <FaBrain className={styles.drawerIcon} />
+                    <span className={styles.drawerLinks}>Skills</span>
                   </div>
-                </NavLink>
+                </Link>
               </Fade>
 
               <Fade left>
-                <NavLink
+                <Link
                   to="/#projects"
                   smooth={true}
                   spy="true"
                   duration={2000}
                 >
-                  <div style={useStyles.drawerItem}>
-                    <FaFolderOpen className={useStyles.drawerIcon} />
-                    <span className={useStyles.drawerLinks}>Projects</span>
+                  <div style={styles.drawerItem}>
+                    <FaFolderOpen className={styles.drawerIcon} />
+                    <span className={styles.drawerLinks}>Projects</span>
                   </div>
-                </NavLink>
+                </Link>
               </Fade>
 
               <Fade left>
-                <NavLink
+                <Link
                   to="/#contacts"
                   smooth={true}
                   spy="true"
                   duration={2000}
                 >
-                  <div style={useStyles.drawerItem}>
-                    <MdPhone className={useStyles.drawerIcon} />
-                    <span className={useStyles.drawerLinks}>Contact</span>
+                  <div style={styles.drawerItem}>
+                    <MdPhone className={styles.drawerIcon} />
+                    <span className={styles.drawerLinks}>Contact</span>
                   </div>
-                </NavLink>
+                </Link>
               </Fade>
             </div>
           </div>

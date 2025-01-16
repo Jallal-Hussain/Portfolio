@@ -3,7 +3,7 @@ export const blogData = [
     id: 1,
     title: "Cloning Sportsjam.in",
     description:
-      "My expeirence working on my first big project within the Masai Curriculum",
+      "My experience working on my first big project within the Masai Curriculum",
     date: "Dec 19, 2021",
     image: "",
     url: "",
@@ -18,15 +18,6 @@ export const blogData = [
   },
   {
     id: 3,
-    title: "Reliance Digital Clone (Part II)",
-    description:
-      "The experience of the third project, with a focus on leadership skills",
-    date: "Feb 27, 2022",
-    image: "",
-    url: "",
-  },
-  {
-    id: 4,
     title: "Reliance Digital Clone (Part II)",
     description:
       "The experience of the third project, with a focus on leadership skills",

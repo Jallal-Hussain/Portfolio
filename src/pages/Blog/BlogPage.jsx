@@ -12,73 +12,74 @@ import { ThemeContext } from "../../contexts/ThemeContext";
 import { blogData } from "../../data/blogData";
 import { headerData } from "../../data/headerData";
 
+const useStyles = (theme, isSmallScreen) => ({
+  searchContainer: {
+    position: "relative",
+    width: isSmallScreen ? "80%" : "50%",
+    marginBottom: "1rem",
+  },
+  searchInput: {
+    color: theme.tertiary,
+    width: "100%",
+    height: "2.75rem",
+    outline: "none",
+    border: "none",
+    borderRadius: "20px",
+    padding: "0.95rem 1rem",
+    paddingLeft: "2.5rem",
+    fontFamily: "'Noto Sans TC', sans-serif",
+    fontWeight: 500,
+    fontSize: "0.9rem",
+    backgroundColor: theme.secondary,
+    boxShadow:
+      theme.type === "dark"
+        ? "inset 3px 3px 6px #ffffff10, inset -3px -3px 6px #00000060"
+        : "inset 3px 3px 6px #ffffffbd, inset -3px -3px 6px #00000030",
+    "&::placeholder": {
+      color: theme.tertiary80,
+    },
+  },
+  searchIcon: {
+    position: "absolute",
+    top: "50%",
+    left: "0.75rem",
+    transform: "translateY(-50%)",
+    color: theme.tertiary,
+    fontSize: "1.5rem",
+  },
+  home: {
+    color: theme.secondary,
+    position: "absolute",
+    top: 25,
+    left: 25,
+    padding: "7px",
+    borderRadius: "50%",
+    boxSizing: "content-box",
+    fontSize: isSmallScreen ? "1.8rem" : "2rem",
+    cursor: "pointer",
+    boxShadow:
+      theme.type === "dark"
+        ? "3px 3px 6px #ffffff40, -3px -3px 6px #00000050"
+        : "3px 3px 6px #ffffff40, -3px -3px 6px #00000050",
+    transition: "all 0.3s ease-in-out",
+    "&:hover": {
+      color: theme.tertiary,
+      transform: "scale(1.1)",
+    },
+  },
+});
+
 function BlogPage() {
   const [search, setSearch] = useState("");
   const { theme } = useContext(ThemeContext);
   const muiTheme = useTheme();
   const isSmallScreen = useMediaQuery(muiTheme.breakpoints.down("sm"));
+  const styles = useStyles(theme, isSmallScreen);
 
   const filteredArticles = blogData.filter((blog) => {
     const content = blog.title + blog.description + blog.date;
     return content.toLowerCase().includes(search.toLowerCase());
   });
-
-  const useStyles = {
-    searchContainer: {
-      position: "relative",
-      width: isSmallScreen ? "80%" : "50%",
-      marginBottom: "1rem",
-    },
-    searchInput: {
-      color: theme.tertiary,
-      width: "100%",
-      height: "2.75rem",
-      outline: "none",
-      border: "none",
-      borderRadius: "20px",
-      padding: "0.95rem 1rem",
-      paddingLeft: "2.5rem",
-      fontFamily: "'Noto Sans TC', sans-serif",
-      fontWeight: 500,
-      fontSize: "0.9rem",
-      backgroundColor: theme.secondary,
-      boxShadow:
-        theme.type === "dark"
-          ? "inset 3px 3px 6px #ffffff10, inset -3px -3px 6px #00000060"
-          : "inset 3px 3px 6px #ffffffbd, inset -3px -3px 6px #00000030",
-      "&::placeholder": {
-        color: theme.tertiary80,
-      },
-    },
-    searchIcon: {
-      position: "absolute",
-      top: "50%",
-      left: "0.75rem",
-      transform: "translateY(-50%)",
-      color: theme.tertiary,
-      fontSize: "1.5rem",
-    },
-    home: {
-      color: theme.secondary,
-      position: "absolute",
-      top: 25,
-      left: 25,
-      padding: "7px",
-      borderRadius: "50%",
-      boxSizing: "content-box",
-      fontSize: isSmallScreen ? "1.8rem" : "2rem",
-      cursor: "pointer",
-      boxShadow:
-        theme.type === "dark"
-          ? "3px 3px 6px #ffffff40, -3px -3px 6px #00000050"
-          : "3px 3px 6px #ffffff40, -3px -3px 6px #00000050",
-      transition: "all 0.3s ease-in-out",
-      "&:hover": {
-        color: theme.tertiary,
-        transform: "scale(1.1)",
-      },
-    },
-  };
 
   return (
     <div className="blogPage" style={{ backgroundColor: theme.secondary }}>
@@ -90,19 +91,19 @@ function BlogPage() {
         style={{ backgroundColor: theme.primary }}
       >
         <Link to="/">
-          <AiOutlineHome className="home-icon" style={useStyles.home} />
+          <AiOutlineHome className="home-icon" style={styles.home} />
         </Link>
         <h1 style={{ color: theme.secondary }}>Blogs</h1>
       </div>
       <div className="blogPage--container">
-        <div className="blog--search" style={useStyles.searchContainer}>
-          <AiOutlineSearch style={useStyles.searchIcon} />
+        <div className="blog--search" style={styles.searchContainer}>
+          <AiOutlineSearch style={styles.searchIcon} />
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search blog..."
-            style={useStyles.searchInput}
+            style={styles.searchInput}
           />
         </div>
         <div className="blogs--container">

@@ -7,8 +7,26 @@ import {
     contactsRed,contactsYellow
 } from './images'
 
+const baseTheme = {
+    primary400: '',
+    primary600: '',
+    primary80: '',
+    primary50: '',
+    primary30: '',
+    secondary70: '',
+    secondary50: '',
+    tertiary80: '',
+    tertiary70: '',
+    tertiary50: '',
+    aboutimg1: '',
+    aboutimg2: '',
+    eduimg: '',
+    expimg: '',
+    contactsimg: ''
+};
 
 export const greenThemeLight = {
+    ...baseTheme,
     type: 'light',
     primary: '#3fc337',
     primary400: '#57d750',
@@ -31,6 +49,7 @@ export const greenThemeLight = {
 }
 
 export const greenThemeDark = {
+    ...baseTheme,
     type: 'dark',
     primary: '#3fc337',
     primary400: '#57d750',
@@ -51,7 +70,9 @@ export const greenThemeDark = {
     expimg: expGreen,
     contactsimg: contactsGreen
 }
+
 export const bwThemeLight = {
+    ...baseTheme,
     type: 'light',
     primary: '#000000',
     primary400: '#000000',
@@ -72,7 +93,9 @@ export const bwThemeLight = {
     expimg: expBlack,
     contactsimg: contactsBlack
 }
+
 export const bwThemeDark = {
+    ...baseTheme,
     type: 'dark',
     primary: '#B6B6B6',
     primary400: '#B6B6B6',
@@ -95,6 +118,7 @@ export const bwThemeDark = {
 }
 
 export const blueThemeLight = {
+    ...baseTheme,
     type: 'light',
     primary: '#545fc4',
     primary400: '#6e76c7',
@@ -115,7 +139,9 @@ export const blueThemeLight = {
     expimg: expBlue,
     contactsimg: contactsBlue
 }
+
 export const blueThemeDark = {
+    ...baseTheme,
     type: 'dark',
     primary: '#545fc4',
     primary400: '#6e76c7',
@@ -138,6 +164,7 @@ export const blueThemeDark = {
 }
 
 export const redThemeLight = {
+    ...baseTheme,
     type: 'light',
     primary: '#f03939',
     primary400: '#dd4d4d',
@@ -158,7 +185,9 @@ export const redThemeLight = {
     expimg: expRed,
     contactsimg: contactsRed
 }
+
 export const redThemeDark = {
+    ...baseTheme,
     type: 'dark',
     primary: '#f03939',
     primary400: '#dd4d4d',
@@ -181,6 +210,7 @@ export const redThemeDark = {
 }
 
 export const orangeThemeLight = {
+    ...baseTheme,
     type: 'light',
     primary: '#f56539',
     primary400: '#ff764d',
@@ -201,7 +231,9 @@ export const orangeThemeLight = {
     expimg: expOrange,
     contactsimg: contactsOrange
 }
+
 export const orangeThemeDark = {
+    ...baseTheme,
     type: 'dark',
     primary: '#f56539',
     primary400: '#ff764d',
@@ -224,6 +256,7 @@ export const orangeThemeDark = {
 }
 
 export const purpleThemeLight = {
+    ...baseTheme,
     type: 'light',
     primary: '#823ae0',
     primary400: '#9456e5',
@@ -244,7 +277,9 @@ export const purpleThemeLight = {
     expimg: expPurple,
     contactsimg: contactsPurple
 }
+
 export const purpleThemeDark = {
+    ...baseTheme,
     type: 'dark',
     primary: '#823ae0',
     primary400: '#9456e5',
@@ -267,6 +302,7 @@ export const purpleThemeDark = {
 }
 
 export const pinkThemeLight = {
+    ...baseTheme,
     type: 'light',
     primary: '#ff4f93',
     primary400: '#e56f9d',
@@ -287,7 +323,9 @@ export const pinkThemeLight = {
     expimg: expPink,
     contactsimg: contactsPink
 }
+
 export const pinkThemeDark = {
+    ...baseTheme,
     type: 'dark',
     primary: '#ff4f93',
     primary400: '#e56f9d',
@@ -310,6 +348,7 @@ export const pinkThemeDark = {
 }
 
 export const yellowThemeLight = {
+    ...baseTheme,
     type: 'light',
     primary: '#E9AD35',
     primary400: '#e8b44c',
@@ -332,6 +371,7 @@ export const yellowThemeLight = {
 }
 
 export const yellowThemeDark = {
+    ...baseTheme,
     type: 'dark',
     primary: '#E9AD35',
     primary400: '#e8b44c',
