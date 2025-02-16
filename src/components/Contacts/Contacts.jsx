@@ -20,6 +20,7 @@ import { ThemeContext } from "../../contexts/ThemeContext";
 import { socialsData } from "../../data/socialsData";
 import { contactsData } from "../../data/contactsData";
 import "./Contacts.css";
+import { Link } from "react-router-dom";
 
 function Contacts() {
   const [open, setOpen] = useState(false);
@@ -43,7 +44,7 @@ function Contacts() {
 
   const useStyles = {
     input: {
-      border: `4px solid ${theme.primary80}`,
+      border: `1px solid ${theme.primary80}`,
       backgroundColor: `${theme.secondary}`,
       color: `${theme.tertiary}`,
       fontFamily: "var(--primaryFont)",
@@ -54,7 +55,7 @@ function Contacts() {
       },
     },
     message: {
-      border: `4px solid ${theme.primary80}`,
+      border: `1px solid ${theme.primary80}`,
       backgroundColor: `${theme.secondary}`,
       color: `${theme.tertiary}`,
       fontFamily: "var(--primaryFont)",
@@ -72,7 +73,6 @@ function Contacts() {
       fontSize: "0.9rem",
       padding: "0 5px",
       transform: "translate(25px,50%)",
-      display: "inline-flex",
     },
     socialIcon: {
       width: "45px",
@@ -173,7 +173,7 @@ function Contacts() {
           <div className="contacts-form">
             <form onSubmit={handleContactForm}>
               <div className="input-container">
-                <label htmlFor="Name" className={useStyles.label}>
+                <label htmlFor="Name" style={useStyles.label}>
                   Name
                 </label>
                 <input
@@ -182,11 +182,12 @@ function Contacts() {
                   onChange={(e) => setName(e.target.value)}
                   type="text"
                   name="Name"
-                  className={`form-input ${useStyles.input}`}
+                  style={useStyles.input}
+                  className="form-input"
                 />
               </div>
               <div className="input-container">
-                <label htmlFor="Email" className={useStyles.label}>
+                <label htmlFor="Email" style={useStyles.label}>
                   Email
                 </label>
                 <input
@@ -195,11 +196,12 @@ function Contacts() {
                   onChange={(e) => setEmail(e.target.value)}
                   type="email"
                   name="Email"
-                  className={`form-input ${useStyles.input}`}
+                  style={useStyles.input}
+                  className="form-input"
                 />
               </div>
               <div className="input-container">
-                <label htmlFor="Message" className={useStyles.label}>
+                <label htmlFor="Message" style={useStyles.label}>
                   Message
                 </label>
                 <textarea
@@ -208,12 +210,13 @@ function Contacts() {
                   onChange={(e) => setMessage(e.target.value)}
                   type="text"
                   name="Message"
-                  className={`form-message ${useStyles.message}`}
+                  style={useStyles.message}
+                  className="form-input"
                 />
               </div>
 
               <div className="submit-btn">
-                <button type="submit" className={useStyles.submitBtn}>
+                <button type="submit" style={useStyles.submitBtn}>
                   <p>{!success ? "Send" : "Sent"}</p>
                   <div className="submit-icon">
                     <AiOutlineSend
@@ -269,12 +272,12 @@ function Contacts() {
           </div>
 
           <div className="contacts-details">
-          {/* <img src={theme.contactsimg} alt="contacts" className="contacts--img" /> */}
+            {/* <img src={theme.contactsimg} alt="contacts" className="contacts--img" /> */}
             <div
               // href={`mailto:${contactsData.email}`}
               className="personal-details"
             >
-              <div className={useStyles.detailsIcon}>
+              <div style={useStyles.detailsIcon}>
                 <FiMail />
               </div>
               <p style={{ color: theme.tertiary }}>{contactsData.email}</p>
@@ -283,130 +286,30 @@ function Contacts() {
               // href={`tel:${contactsData.phone}`}
               className="personal-details"
             >
-              <div className={useStyles.detailsIcon}>
+              <div style={useStyles.detailsIcon}>
                 <FiPhone />
               </div>
               <p style={{ color: theme.tertiary }}>{contactsData.phone}</p>
             </div>
             <div className="personal-details">
-              <div className={useStyles.detailsIcon}>
+              <div style={useStyles.detailsIcon}>
                 <HiOutlineLocationMarker />
               </div>
               <p style={{ color: theme.tertiary }}>{contactsData.address}</p>
             </div>
-
             <div className="socialmedia-icons">
-              {socialsData.twitter && (
-                <a
-                  href={socialsData.twitter}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={useStyles.socialIcon}
-                >
-                  <FaTwitter aria-label="Twitter" />
-                </a>
-              )}
-              {socialsData.github && (
-                <a
-                  href={socialsData.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={useStyles.socialIcon}
-                >
-                  <FaGithub aria-label="GitHub" />
-                </a>
-              )}
-              {socialsData.linkedIn && (
-                <a
-                  href={socialsData.linkedIn}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={useStyles.socialIcon}
-                >
-                  <FaLinkedinIn aria-label="LinkedIn" />
-                </a>
-              )}
-              {socialsData.instagram && (
-                <a
-                  href={socialsData.instagram}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={useStyles.socialIcon}
-                >
-                  <FaInstagram aria-label="Instagram" />
-                </a>
-              )}
-              {socialsData.youtube && (
-                <a
-                  href={socialsData.youtube}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={useStyles.socialIcon}
-                >
-                  <FaYoutube aria-label="YouTube" />
-                </a>
-              )}
-              {/* {socialsData.medium && (
-                <a
-                  href={socialsData.medium}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={useStyles.socialIcon}
-                >
-                  <FaMediumM aria-label="Medium" />
-                </a>
-              )} */}
-
-              {/* {socialsData.blogger && (
-                <a
-                  href={socialsData.blogger}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={useStyles.socialIcon}
-                >
-                  <FaBloggerB aria-label="Blogger" />
-                </a>
-              )} */}
-              {/* {socialsData.reddit && (
-                <a
-                  href={socialsData.reddit}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={useStyles.socialIcon}
-                >
-                  <FaRedditAlien aria-label="Reddit" />
-                </a>
-              )} */}
-              {/* {socialsData.stackOverflow && (
-                <a
-                  href={socialsData.stackOverflow}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={useStyles.socialIcon}
-                >
-                  <FaStackOverflow aria-label="Stack Overflow" />
-                </a>
-              )} */}
-              {/* {socialsData.codepen && (
-                <a
-                  href={socialsData.codepen}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={useStyles.socialIcon}
-                >
-                  <FaCodepen aria-label="CodePen" />
-                </a>
-              )} */}
-              {/* {socialsData.gitlab && (
-                <a
-                  href={socialsData.gitlab}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={useStyles.socialIcon}
-                >
-                  <FaGitlab aria-label="GitLab" />
-                </a>
-              )} */}
+              {socialsData.map((social) => (
+                <div key={social.key}>
+                  <Link
+                    to={social.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={useStyles.socialIcon}
+                  >
+                    {social.icon}
+                  </Link>
+                </div>
+              ))}
             </div>
           </div>
         </div>

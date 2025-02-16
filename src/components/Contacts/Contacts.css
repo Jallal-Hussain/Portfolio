@@ -47,8 +47,8 @@
   width: 100%;
   font-family: var(--primaryFont);
   border-radius: 15px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  background-color: #545fc4;
+  /* box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); */
+  /* background-color: #545fc4; */
   padding: 1.67rem;
   color: #ffffff;
 }
@@ -75,7 +75,6 @@
   border: 1px solid #212121cc;
   border-radius: 8px;
   width: 100%;
-  resize: none;
 }
 
 .form-message {
@@ -168,7 +167,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 1.5rem;
   margin-top: 1rem;
 }
